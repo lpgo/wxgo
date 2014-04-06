@@ -30,14 +30,6 @@ type Message struct {
 	Key          appengine.BlobKey `xml:"-"`
 }
 
-/*func handleText(w http.ResponseWriter, r *http.Request) {
-	c := appengine.NewContext(r)
-	reader := blobstore.NewReader(c, key)
-	buf, _ := ioutil.ReadAll(reader)
-	fmt.Fprintln(w, string(buf))
-
-}
-*/
 func SaveFile(c appengine.Context, buf []byte, mimeType string) (appengine.BlobKey, error) {
 	writer, err := blobstore.Create(c, "image/jpeg")
 	if err != nil {
